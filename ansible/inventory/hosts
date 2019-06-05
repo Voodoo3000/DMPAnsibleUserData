@@ -1,0 +1,8 @@
+[webserver]
+web
+
+[database]
+db
+
+[control]
+control ansible_connection=local

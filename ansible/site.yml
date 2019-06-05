@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+    - name: update apt cache
+      yum: name=* state=latest
+
+- include: database.yml
+- include: webserver.yml

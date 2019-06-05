@@ -1,0 +1,16 @@
+<?php
+{% for host in groups['database'] %}
+$servername ="{{hostvars[host].ansible_default_ipv4.address}}";
+$username = "{{hostvars[host].db_user}}";
+$password = "{{hostvars[host].db_pass}}";
+{% endfor %}
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+echo "MySQL connection to the $servername RDS instance is established";
+?>
+

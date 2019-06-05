@@ -1,0 +1,24 @@
+---
+# Bring stack down
+- hosts: webserver
+  become: true
+  gather_facts: false
+  tasks:
+    - action: service name=httpd state=stopped
+    - wait_for: port=80 state=stopped
+
+# Restart mysql
+- hosts: database
+  become: true
+  gather_facts: false
+  tasks:
+    - action: service name=mysql state=restarted
+    - wait_for: port=3306 state=started
+
+# Bring stack up
+- hosts: webserver
+  become: true
+  gather_facts: false
+  tasks:
+    - action: service name=httpd state=started
+    - wait_for: port=80

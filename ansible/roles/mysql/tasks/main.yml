@@ -1,0 +1,16 @@
+---
+- name: install the MySQL repo.
+  action: yum name={{ item }}
+  with_items:
+    - MySQL-python
+    - mysql
+    - mysql-server
+
+- name: ensure mysql started
+  service: name=mysql state=started enabled=yes
+
+- name: create demo database
+  mysql_db: name={{ db_name }} state=present
+
+- name: create demo user
+  mysql_user: name={{ db_user_name }} password={{ db_user_pass }} priv={{ db_name }}.*:ALL host='{{ db_user_host }}'
