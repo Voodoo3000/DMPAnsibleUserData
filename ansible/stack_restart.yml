@@ -1,7 +1,7 @@
 ---
 # Bring stack down
 - hosts: webserver
-  become: true
+  become: yes
   gather_facts: false
   tasks:
     - action: service name=httpd state=stopped
@@ -9,7 +9,7 @@
 
 # Restart mysql
 - hosts: database
-  become: true
+  become: yes
   gather_facts: false
   tasks:
     - action: service name=mysql state=restarted
@@ -17,7 +17,7 @@
 
 # Bring stack up
 - hosts: webserver
-  become: true
+  become: yes
   gather_facts: false
   tasks:
     - action: service name=httpd state=started
