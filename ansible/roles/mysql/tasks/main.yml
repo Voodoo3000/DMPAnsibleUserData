@@ -3,11 +3,10 @@
   action: yum name={{ item }}
   with_items:
     - MySQL-python
-    - mysql
-    - mysql-server
+    - mariadb-server
 
 - name: ensure mysql started
-  service: name=mysql state=started enabled=yes
+  service: name=mariadb state=started enabled=yes
 
 - name: create demo database
   mysql_db: name={{ db_name }} state=present
