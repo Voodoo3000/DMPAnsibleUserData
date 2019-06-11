@@ -2,3 +2,4 @@
 db_name: demo
 db_user: demo
 db_pass: demo
+ansible_ssh_private_key_file: /home/ec2-user/.ssh/id_rsa
