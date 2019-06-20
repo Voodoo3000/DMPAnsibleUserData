@@ -1,10 +1,11 @@
---
+---
 - hosts: all
   become: yes
   gather_facts: true
   tasks:
     - name: update apt cache
       yum:
+        lock_timeout: 180
         name=* state=latest
 
 - include: control.yml
