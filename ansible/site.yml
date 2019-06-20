@@ -4,9 +4,7 @@
   gather_facts: true
   tasks:
     - name: update apt cache
-      yum:
-        lock_timeout: 180
-        name=* state=latest
+      yum: name=* state=latest
 
 - include: control.yml
 - include: database.yml
