@@ -5,7 +5,7 @@
   tasks:
     - name: update apt cache
       yum:
-        lock_timeout: 120
+        lock_timeout: 180
         name=* state=latest
 
 - include: database.yml
