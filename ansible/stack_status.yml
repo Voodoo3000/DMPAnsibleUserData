@@ -18,14 +18,3 @@
 
     - name: verify mysql is listening on 3306
       wait_for: port=3306 timeout=1
-
-- hosts: control
-  tasks:
-    - name: verify end-to-end response
-      uri: url=http://{{item}} return_content=yes
-      with_items: ec2-18-233-226-144.compute-1.amazonaws.com
-      register: web_index
-
-    - fail: msg="index failed to return content"
-      when: "'MySQL connection to the ip-10-21-170-115.ec2.internal RDS instance is established' not in item.content"
-      with_items: "{{web_index.results}}"
