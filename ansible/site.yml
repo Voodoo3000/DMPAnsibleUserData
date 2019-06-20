@@ -6,7 +6,6 @@
     - name: update apt cache
       yum:
         name=* state=latest
-        lock_timeout: 180
 
 - include: control.yml
 - include: database.yml
