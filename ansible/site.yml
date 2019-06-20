@@ -8,11 +8,6 @@
         lock_timeout: 180
         name=* state=latest
 
+- include: control.yml
 - include: database.yml
 - include: webserver.yml
-
-- name: control prompt changing
-  hosts: control
-  become: yes
-  roles:
-   - control
